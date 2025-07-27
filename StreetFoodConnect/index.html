@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreetFoodConnect - Connecting Street Vendors with Opportunities</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🍜 StreetFoodConnect</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">Register Vendor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="vendor-list.html">Find Vendors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <!-- Google Translate Widget -->
+                <div id="google_translate_element" class="ms-3"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-75">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold text-white mb-4">
+                        Connecting Street Food Vendors with <span class="text-warning">Opportunities</span>
+                    </h1>
+                    <p class="lead text-white-50 mb-4">
+                        Empowering street food vendors to register online and connect with NGOs, event organizers, and food enthusiasts. Building bridges between authentic street food culture and modern opportunities.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="register.html" class="btn btn-warning btn-lg px-4 py-2">Register as Vendor</a>
+                        <a href="vendor-list.html" class="btn btn-outline-light btn-lg px-4 py-2">Find Vendors</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="hero-image-placeholder">
+                        <div class="food-emoji">🍛🌮🍜🥘🍕</div>
+                        <p class="text-white-50 mt-3">Authentic Street Food Culture</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-5 fw-bold mb-3">Why Choose StreetFoodConnect?</h2>
+                    <p class="lead text-muted">Bridging the gap between street food vendors and opportunities</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Feature 1: For Vendors -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">🏪</div>
+                        <h4 class="fw-bold mb-3">For Street Vendors</h4>
+                        <ul class="list-unstyled text-muted">
+                            <li>✓ Easy online registration</li>
+                            <li>✓ Showcase your cuisine specialty</li>
+                            <li>✓ Display hygiene ratings</li>
+                            <li>✓ Connect with event organizers</li>
+                            <li>✓ Expand your customer base</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Feature 2: For NGOs -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">🤝</div>
+                        <h4 class="fw-bold mb-3">For NGOs & Organizations</h4>
+                        <ul class="list-unstyled text-muted">
+                            <li>✓ Find verified street vendors</li>
+                            <li>✓ Filter by location and cuisine</li>
+                            <li>✓ Check hygiene standards</li>
+                            <li>✓ Support local communities</li>
+                            <li>✓ Easy partnership opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Feature 3: For Events -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">🎪</div>
+                        <h4 class="fw-bold mb-3">For Event Organizers</h4>
+                        <ul class="list-unstyled text-muted">
+                            <li>✓ Discover authentic food vendors</li>
+                            <li>✓ Diverse cuisine options</li>
+                            <li>✓ Quality-assured vendors</li>
+                            <li>✓ Streamlined booking process</li>
+                            <li>✓ Cultural food experiences</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section py-5 bg-light">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item">
+                        <h3 class="display-4 fw-bold text-primary">500+</h3>
+                        <p class="text-muted">Registered Vendors</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item">
+                        <h3 class="display-4 fw-bold text-success">50+</h3>
+                        <p class="text-muted">Partner NGOs</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item">
+                        <h3 class="display-4 fw-bold text-warning">100+</h3>
+                        <p class="text-muted">Successful Events</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item">
+                        <h3 class="display-4 fw-bold text-info">25+</h3>
+                        <p class="text-muted">Cities Covered</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section py-5 bg-primary">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold text-white mb-4">Ready to Get Started?</h2>
+                    <p class="lead text-white-50 mb-4">
+                        Join thousands of street food vendors and organizations already using StreetFoodConnect
+                    </p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="register.html" class="btn btn-warning btn-lg px-5">Register Now</a>
+                        <a href="vendor-list.html" class="btn btn-outline-light btn-lg px-5">Browse Vendors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="fw-bold">🍜 StreetFoodConnect</h5>
+                    <p class="text-muted">Connecting street food culture with modern opportunities</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted mb-0">&copy; 2024 StreetFoodConnect. Built for National Hackathon.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+    
+    <!-- Firebase Configuration -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/firebase-init.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/index.js"></script>
+    
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,mr,ta,te,bn,gu,kn,ml,pa',
+                layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
