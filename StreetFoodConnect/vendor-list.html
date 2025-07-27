@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Vendors - StreetFoodConnect</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🍜 StreetFoodConnect</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">Register Vendor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="vendor-list.html">Find Vendors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <!-- Google Translate Widget -->
+                <div id="google_translate_element" class="ms-3"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-5 fw-bold mb-3">Discover Street Food Vendors</h1>
+                    <p class="lead mb-0">Find authentic street food vendors for your events, partnerships, and collaborations</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <div class="d-flex gap-2 justify-content-lg-end justify-content-start mt-3 mt-lg-0">
+                        <a href="register.html" class="btn btn-warning">Add Your Vendor</a>
+                        <button id="refresh-btn" class="btn btn-outline-light">
+                            <span id="refresh-icon">🔄</span> Refresh
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-card">
+                <div class="row align-items-end">
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <label for="cityFilter" class="form-label fw-semibold">Filter by City</label>
+                        <select id="cityFilter" class="form-select">
+                            <option value="">All Cities</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <label for="cuisineFilter" class="form-label fw-semibold">Filter by Cuisine</label>
+                        <select id="cuisineFilter" class="form-select">
+                            <option value="">All Cuisines</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <label for="hygieneFilter" class="form-label fw-semibold">Min. Hygiene Score</label>
+                        <select id="hygieneFilter" class="form-select">
+                            <option value="">Any Score</option>
+                            <option value="8">8+ (Excellent)</option>
+                            <option value="6">6+ (Good)</option>
+                            <option value="4">4+ (Average)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <button id="clear-filters" class="btn btn-outline-secondary w-100">Clear Filters</button>
+                    </div>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search vendors by name, location, or cuisine...">
+                            <button class="btn btn-primary" type="button" id="search-btn">Search</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-2 mt-md-0">
+                        <div class="d-flex align-items-center justify-content-md-end">
+                            <span class="text-muted me-3">Sort by:</span>
+                            <select id="sortBy" class="form-select" style="width: auto;">
+                                <option value="name">Name (A-Z)</option>
+                                <option value="hygiene">Hygiene Score</option>
+                                <option value="location">Location</option>
+                                <option value="newest">Newest First</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vendors Display Section -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Loading State -->
+            <div id="loading-state" class="text-center py-5">
+                <div class="loading-spinner mx-auto mb-3" style="width: 3rem; height: 3rem;"></div>
+                <p class="text-muted">Loading vendors...</p>
+            </div>
+            
+            <!-- Vendors Count and Stats -->
+            <div id="vendors-stats" class="row mb-4" style="display: none;">
+                <div class="col-md-6">
+                    <h4 class="mb-0">Street Food Vendors</h4>
+                    <p class="text-muted mb-0">
+                        Showing <span id="showing-count">0</span> of <span id="total-count">0</span> vendors
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="btn-group" role="group">
+                        <input type="radio" class="btn-check" name="viewMode" id="grid-view" checked>
+                        <label class="btn btn-outline-primary" for="grid-view">Grid View</label>
+                        
+                        <input type="radio" class="btn-check" name="viewMode" id="list-view">
+                        <label class="btn btn-outline-primary" for="list-view">List View</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vendors Grid -->
+            <div id="vendors-container" class="row g-4">
+                <!-- Vendor cards will be dynamically inserted here -->
+            </div>
+            
+            <!-- No Vendors Found -->
+            <div id="no-vendors" class="text-center py-5" style="display: none;">
+                <div class="mb-4">
+                    <div style="font-size: 4rem; opacity: 0.5;">🔍</div>
+                </div>
+                <h4 class="text-muted">No vendors found</h4>
+                <p class="text-muted">Try adjusting your filters or search terms</p>
+                <a href="register.html" class="btn btn-primary">Register First Vendor</a>
+            </div>
+            
+            <!-- Error State -->
+            <div id="error-state" class="text-center py-5" style="display: none;">
+                <div class="mb-4">
+                    <div style="font-size: 4rem; opacity: 0.5;">⚠️</div>
+                </div>
+                <h4 class="text-danger">Error Loading Vendors</h4>
+                <p class="text-muted">There was a problem loading the vendor data. Please try again.</p>
+                <button id="retry-btn" class="btn btn-primary">Try Again</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Optional Map Section (Placeholder) -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="text-center mb-4">Vendor Locations Map</h3>
+                    <div class="card">
+                        <div class="card-body text-center py-5">
+                            <div class="mb-3" style="font-size: 3rem; opacity: 0.5;">🗺️</div>
+                            <h5 class="text-muted">Interactive Map Coming Soon</h5>
+                            <p class="text-muted">
+                                We're working on integrating an interactive map to show vendor locations. 
+                                This will help you find vendors near your event location.
+                            </p>
+                            <small class="text-muted">
+                                Future integration: Google Maps API or Mapbox for vendor location visualization
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Vendor Modal -->
+    <div class="modal fade" id="contactVendorModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Contact Vendor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="vendor-contact-info">
+                        <!-- Vendor contact information will be populated here -->
+                    </div>
+                    <hr>
+                    <form id="contact-vendor-form">
+                        <div class="mb-3">
+                            <label for="inquirer-name" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="inquirer-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inquirer-email" class="form-label">Your Email</label>
+                            <input type="email" class="form-control" id="inquirer-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inquiry-message" class="form-label">Message</label>
+                            <textarea class="form-control" id="inquiry-message" rows="4" 
+                                      placeholder="Tell the vendor about your event or partnership opportunity..." required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="send-inquiry" class="btn btn-primary">Send Inquiry</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="fw-bold">🍜 StreetFoodConnect</h5>
+                    <p class="text-muted">Connecting street food culture with modern opportunities</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted mb-0">&copy; 2024 StreetFoodConnect. Built for National Hackathon.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+    
+    <!-- Firebase Configuration -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/firebase-init.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/vendor-list.js"></script>
+    
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,mr,ta,te,bn,gu,kn,ml,pa',
+                layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
