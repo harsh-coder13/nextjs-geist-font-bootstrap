@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Vendor - StreetFoodConnect</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🍜 StreetFoodConnect</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="register.html">Register Vendor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="vendor-list.html">Find Vendors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <!-- Google Translate Widget -->
+                <div id="google_translate_element" class="ms-3"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <!-- Page Header -->
+                    <div class="text-center mb-5">
+                        <h1 class="display-5 fw-bold text-primary mb-3">Register Your Street Food Vendor</h1>
+                        <p class="lead text-muted">Join our platform and connect with NGOs, event organizers, and food enthusiasts</p>
+                    </div>
+                    
+                    <!-- Registration Form Card -->
+                    <div class="card shadow-lg border-0">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h3 class="mb-0">🏪 Vendor Registration Form</h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Alert Container -->
+                            <div id="alert-container"></div>
+                            
+                            <form id="vendor-registration-form" novalidate>
+                                <div class="row">
+                                    <!-- Vendor Name -->
+                                    <div class="col-md-6 mb-3">
+                                        <label for="vendorName" class="form-label">
+                                            Vendor Name <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" id="vendorName" name="vendorName" 
+                                               placeholder="e.g., Raj's Chaat Corner" required>
+                                        <div class="invalid-feedback">
+                                            Please provide a vendor name.
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Cuisine Type -->
+                                    <div class="col-md-6 mb-3">
+                                        <label for="cuisine" class="form-label">
+                                            Cuisine Type <span class="text-danger">*</span>
+                                        </label>
+                                        <select class="form-select" id="cuisine" name="cuisine" required>
+                                            <option value="">Select Cuisine Type</option>
+                                            <option value="North Indian">North Indian</option>
+                                            <option value="South Indian">South Indian</option>
+                                            <option value="Street Food">Street Food</option>
+                                            <option value="Chinese">Chinese</option>
+                                            <option value="Continental">Continental</option>
+                                            <option value="Bengali">Bengali</option>
+                                            <option value="Punjabi">Punjabi</option>
+                                            <option value="Gujarati">Gujarati</option>
+                                            <option value="Maharashtrian">Maharashtrian</option>
+                                            <option value="Rajasthani">Rajasthani</option>
+                                            <option value="Fast Food">Fast Food</option>
+                                            <option value="Beverages">Beverages</option>
+                                            <option value="Desserts">Desserts</option>
+                                            <option value="Mixed">Mixed Cuisine</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select a cuisine type.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <!-- Hygiene Score -->
+                                    <div class="col-md-6 mb-3">
+                                        <label for="hygieneScore" class="form-label">
+                                            Hygiene Score (1-10) <span class="text-danger">*</span>
+                                        </label>
+                                        <select class="form-select" id="hygieneScore" name="hygieneScore" required>
+                                            <option value="">Select Score</option>
+                                            <option value="10">10 - Excellent</option>
+                                            <option value="9">9 - Very Good</option>
+                                            <option value="8">8 - Good</option>
+                                            <option value="7">7 - Above Average</option>
+                                            <option value="6">6 - Average</option>
+                                            <option value="5">5 - Below Average</option>
+                                            <option value="4">4 - Poor</option>
+                                            <option value="3">3 - Very Poor</option>
+                                            <option value="2">2 - Critical</option>
+                                            <option value="1">1 - Unacceptable</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select a hygiene score.
+                                        </div>
+                                        <small class="form-text text-muted">
+                                            Rate your hygiene standards honestly (10 = Excellent, 1 = Needs Improvement)
+                                        </small>
+                                    </div>
+                                    
+                                    <!-- Location -->
+                                    <div class="col-md-6 mb-3">
+                                        <label for="location" class="form-label">
+                                            Location <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" id="location" name="location" 
+                                               placeholder="e.g., Mumbai, Maharashtra" required>
+                                        <div class="invalid-feedback">
+                                            Please provide your location.
+                                        </div>
+                                        <small class="form-text text-muted">
+                                            Include city and state for better visibility
+                                        </small>
+                                    </div>
+                                </div>
+                                
+                                <!-- Contact Information -->
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="contactPhone" class="form-label">
+                                            Contact Phone <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="tel" class="form-control" id="contactPhone" name="contactPhone" 
+                                               placeholder="e.g., +91 9876543210" required>
+                                        <div class="invalid-feedback">
+                                            Please provide a valid phone number.
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="contactEmail" class="form-label">
+                                            Contact Email
+                                        </label>
+                                        <input type="email" class="form-control" id="contactEmail" name="contactEmail" 
+                                               placeholder="e.g., vendor@example.com">
+                                        <div class="invalid-feedback">
+                                            Please provide a valid email address.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Vendor Image -->
+                                <div class="mb-3">
+                                    <label for="vendorImage" class="form-label">
+                                        Vendor Image/Logo
+                                    </label>
+                                    <input type="file" class="form-control" id="vendorImage" name="vendorImage" 
+                                           accept="image/*">
+                                    <small class="form-text text-muted">
+                                        Upload an image of your food stall or logo (optional). Max size: 5MB
+                                    </small>
+                                    <div class="invalid-feedback">
+                                        Please select a valid image file.
+                                    </div>
+                                </div>
+                                
+                                <!-- Description -->
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">
+                                        Description
+                                    </label>
+                                    <textarea class="form-control" id="description" name="description" rows="4" 
+                                              placeholder="Tell us about your specialties, operating hours, and what makes your food unique..."></textarea>
+                                    <small class="form-text text-muted">
+                                        Describe your specialties and what makes your vendor unique (optional)
+                                    </small>
+                                </div>
+                                
+                                <!-- Operating Hours -->
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="operatingHours" class="form-label">
+                                            Operating Hours
+                                        </label>
+                                        <input type="text" class="form-control" id="operatingHours" name="operatingHours" 
+                                               placeholder="e.g., 6:00 AM - 10:00 PM">
+                                        <small class="form-text text-muted">
+                                            When are you usually open?
+                                        </small>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="priceRange" class="form-label">
+                                            Price Range
+                                        </label>
+                                        <select class="form-select" id="priceRange" name="priceRange">
+                                            <option value="">Select Price Range</option>
+                                            <option value="₹10-50">₹10-50 (Budget)</option>
+                                            <option value="₹50-100">₹50-100 (Moderate)</option>
+                                            <option value="₹100-200">₹100-200 (Premium)</option>
+                                            <option value="₹200+">₹200+ (Luxury)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Terms and Conditions -->
+                                <div class="mb-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                                        <label class="form-check-label" for="agreeTerms">
+                                            I agree to the <a href="#" class="text-primary">Terms and Conditions</a> and 
+                                            <a href="#" class="text-primary">Privacy Policy</a> <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="invalid-feedback">
+                                            You must agree to the terms and conditions.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Submit Button -->
+                                <div class="d-grid gap-2">
+                                    <button type="submit" id="submit-btn" class="btn btn-primary btn-lg">
+                                        Register Vendor
+                                    </button>
+                                    <button type="reset" class="btn btn-outline-secondary">
+                                        Clear Form
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Information -->
+                    <div class="row mt-5">
+                        <div class="col-md-4 text-center mb-4">
+                            <div class="feature-icon mb-3">✅</div>
+                            <h5 class="fw-bold">Easy Registration</h5>
+                            <p class="text-muted">Simple form to get you started quickly</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-4">
+                            <div class="feature-icon mb-3">🤝</div>
+                            <h5 class="fw-bold">Connect with Partners</h5>
+                            <p class="text-muted">Get discovered by NGOs and event organizers</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-4">
+                            <div class="feature-icon mb-3">📈</div>
+                            <h5 class="fw-bold">Grow Your Business</h5>
+                            <p class="text-muted">Expand your reach and customer base</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="fw-bold">🍜 StreetFoodConnect</h5>
+                    <p class="text-muted">Connecting street food culture with modern opportunities</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted mb-0">&copy; 2024 StreetFoodConnect. Built for National Hackathon.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-storage-compat.js"></script>
+    
+    <!-- Firebase Configuration -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/firebase-init.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/register.js"></script>
+    
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,mr,ta,te,bn,gu,kn,ml,pa',
+                layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
